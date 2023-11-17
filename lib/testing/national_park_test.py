@@ -19,24 +19,25 @@ class TestNationalParks:
         assert isinstance(np.name, str)
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     NationalPark(2)
+        with pytest.raises(Exception):
+            NationalPark(2)
         
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     NationalPark("me")
+        with pytest.raises(Exception):
+            NationalPark("me")
 
     def test_name_setter(self):
         """cannot change the name of the national_park"""
         np = NationalPark("under the sea")
 
         # comment out the next two lines if using Exceptions
-        np.name = "over the sea"
-        assert np.name == "under the sea"
+        #np.name = "over the sea"
+        #assert np.name == "under the sea"
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     np.name = "over the sea"
+        with pytest.raises(Exception):
+            np.name = "over the sea"
+        assert np.name == "under the sea"
 
     def test_has_many_trips(self):
         """national_park has many trips"""
@@ -124,12 +125,12 @@ class TestNationalParks:
         assert p_1.best_visitor().name == "Tom"
 
 
-#     def test_most_visited(self):
-#         """returns the most visited park"""
-#         p_1 = NationalPark("Yosemite")
-#         p_2 = NationalPark("Yellow Stone")
-#         vis_1 = Visitor("Tom")
-#         Trip(vis_1, p_1, "May 5th", "May 9th")
-#         Trip(vis_1, p_1, "January 5th", "January 20th")
-#         Trip(vis_1, p_2, "January 25th", "January 30th")
-#         assert NationalPark.most_visited().name == "Yosemite"
+    def test_most_visited(self):
+        """returns the most visited park"""
+        p_1 = NationalPark("Yosemite")
+        p_2 = NationalPark("Yellow Stone")
+        vis_1 = Visitor("Tom")
+        Trip(vis_1, p_1, "May 5th", "May 9th")
+        Trip(vis_1, p_1, "January 5th", "January 20th")
+        Trip(vis_1, p_2, "January 25th", "January 30th")
+        assert NationalPark.most_visited().name == "Yosemite"
